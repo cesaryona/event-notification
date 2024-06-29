@@ -2,7 +2,7 @@ package com.events.notification.service.converter
 
 import com.events.notification.controller.request.EventRequestBody
 import com.events.notification.controller.response.EventResponseBody
-import com.events.notification.entity.EventEntity
+import com.events.notification.repository.entity.EventEntity
 import org.springframework.stereotype.Component
 import java.time.LocalDateTime
 

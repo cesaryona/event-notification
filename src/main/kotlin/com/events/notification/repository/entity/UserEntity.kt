@@ -1,4 +1,4 @@
-package com.events.notification.entity
+package com.events.notification.repository.entity
 
 import org.apache.commons.lang3.builder.ToStringBuilder
 import org.apache.commons.lang3.builder.ToStringStyle
@@ -6,12 +6,14 @@ import org.springframework.data.mongodb.core.mapping.Document
 import java.time.LocalDateTime
 
 @Document
-data class EventEntity(
+data class UserEntity(
 
     val id: String?,
-    val eventType: String,
-    val description: String,
-    val dateTime: LocalDateTime,
+    val firstName: String,
+    val lastName: String,
+    val email: String,
+    val phone: String,
+    val userPreference: UserPreference,
     var createdAt: LocalDateTime,
     var updatedAt: LocalDateTime
 

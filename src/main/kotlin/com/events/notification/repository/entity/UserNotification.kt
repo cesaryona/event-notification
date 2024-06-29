@@ -1,13 +1,13 @@
-package com.events.notification.entity
+package com.events.notification.repository.entity
 
-import com.events.notification.enums.EventType
+import com.events.notification.enums.NotificationType
 import org.apache.commons.lang3.builder.ToStringBuilder
 import org.apache.commons.lang3.builder.ToStringStyle
 
-data class UserPreference(
+data class UserNotification(
 
-    val eventType: List<EventType>,
-    val userNotification: List<UserNotification>?
+    val type: NotificationType,
+    val active: Boolean
 
 ) {
     override fun toString(): String {

@@ -1,6 +1,6 @@
 package com.events.notification.controller.response
 
-import com.events.notification.entity.UserPreference
+import com.events.notification.repository.entity.UserPreference
 import org.apache.commons.lang3.builder.ToStringBuilder
 import org.apache.commons.lang3.builder.ToStringStyle
 

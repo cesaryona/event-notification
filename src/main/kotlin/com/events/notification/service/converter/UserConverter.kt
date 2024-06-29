@@ -2,9 +2,9 @@ package com.events.notification.service.converter
 
 import com.events.notification.controller.request.UserRequestBody
 import com.events.notification.controller.response.UserResponseBody
-import com.events.notification.entity.UserEntity
-import com.events.notification.entity.UserNotification
-import com.events.notification.entity.UserPreference
+import com.events.notification.repository.entity.UserEntity
+import com.events.notification.repository.entity.UserNotification
+import com.events.notification.repository.entity.UserPreference
 import com.events.notification.enums.NotificationType
 import org.springframework.stereotype.Component
 import java.time.LocalDateTime
