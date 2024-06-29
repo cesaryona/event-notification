@@ -45,13 +45,13 @@ class EventServiceImpl(
 
     override fun updateEvent(id: String, request: EventRequestBody) {
         eventRepository.findById(id).ifPresent {
-            val updatedEvent = it.copy(
+            val current = it.copy(
                 eventType = request.eventType.description,
                 description = request.description,
                 dateTime = request.dateTime,
                 updatedAt = LocalDateTime.now()
             )
-            eventRepository.save(updatedEvent)
+            eventRepository.save(current)
         }
     }
 

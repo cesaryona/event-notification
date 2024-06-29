@@ -7,7 +7,7 @@ import org.apache.commons.lang3.builder.ToStringStyle
 data class UserPreference(
 
     val eventType: List<EventType>,
-    val userNotification: List<UserNotification>
+    val userNotification: List<UserNotification>?
 
 ) {
     override fun toString(): String {

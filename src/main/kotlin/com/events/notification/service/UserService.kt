@@ -1,19 +1,18 @@
 package com.events.notification.service
 
-import com.events.notification.controller.request.EventRequestBody
-import com.events.notification.controller.response.EventResponseBody
-import com.events.notification.entity.EventEntity
+import com.events.notification.controller.request.UserRequestBody
+import com.events.notification.controller.response.UserResponseBody
 import org.springframework.data.domain.Page
 
 interface UserService {
 
-    fun getAllUsers(page: Int, size: Int): Page<EventResponseBody>
+    fun getAllUsers(page: Int, size: Int): Page<UserResponseBody>
 
-    fun getUserById(id: String): EventEntity
+    fun getUserById(id: String): UserResponseBody
 
-    fun saveUser(request: EventRequestBody): EventEntity
+    fun saveUser(request: UserRequestBody): UserResponseBody
 
-    fun updateUser(id: String, request: EventRequestBody)
+    fun updateUser(id: String, request: UserRequestBody)
 
     fun deleteUserById(id: String)
 }
