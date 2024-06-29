@@ -16,4 +16,6 @@ interface EventService {
     fun updateEvent(id: String, request: EventRequestBody)
 
     fun deleteEventById(id: String)
+
+    fun sendNotification(eventResponseBody: EventResponseBody)
 }

@@ -19,7 +19,6 @@ class NotificationImpl : NotificationService {
             NotificationType.EMAIL to EmailNotification()
         )
 
-
     override fun sendNotification(userResponseBody: UserResponseBody) {
         userResponseBody.userPreference.userNotification?.forEach { notification ->
             if (notification.active) {

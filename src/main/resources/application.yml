@@ -13,3 +13,8 @@ spring:
       password: '123'
       port: '27017'
       host: localhost
+
+kafka:
+  bootstrap-servers: localhost:9092
+  topic:
+    event-notification: event-notification
