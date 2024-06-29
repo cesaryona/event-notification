@@ -1,0 +1,15 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: event-notification
+
+  data:
+    mongodb:
+      authentication-database: admin
+      username: admin
+      database: event-notification
+      password: '123'
+      port: '27017'
+      host: localhost
