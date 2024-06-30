@@ -16,5 +16,7 @@ spring:
 
 kafka:
   bootstrap-servers: localhost:9092
+  consumer:
+    group-id: notification-consumer-group
   topic:
     event-notification: event-notification

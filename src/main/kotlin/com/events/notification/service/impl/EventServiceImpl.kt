@@ -6,7 +6,6 @@ import com.events.notification.exception.NotFoundException
 import com.events.notification.repository.EventRepository
 import com.events.notification.service.EventService
 import com.events.notification.service.converter.EventConverter
-import com.events.notification.service.NotificationService
 import com.events.notification.service.message.KafkaProducerService
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageImpl
@@ -52,7 +51,7 @@ class EventServiceImpl(
     override fun updateEvent(id: String, request: EventRequestBody) {
         eventRepository.findById(id).ifPresent {
             val current = it.copy(
-                eventType = request.eventType.description,
+                eventType = request.eventType,
                 description = request.description,
                 dateTime = request.dateTime,
                 updatedAt = LocalDateTime.now()

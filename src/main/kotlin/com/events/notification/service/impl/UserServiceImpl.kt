@@ -2,6 +2,7 @@ package com.events.notification.service.impl
 
 import com.events.notification.controller.request.UserRequestBody
 import com.events.notification.controller.response.UserResponseBody
+import com.events.notification.enums.EventType
 import com.events.notification.exception.NotFoundException
 import com.events.notification.repository.UserRepository
 import com.events.notification.service.UserService
@@ -36,6 +37,12 @@ class UserServiceImpl(
             .orElseThrow { throw NotFoundException("User Not Found. Id: $id") }
 
         return userConverter.toResponseBody(userEntity)
+    }
+
+    override fun getUsersByEventType(eventType: EventType): List<UserResponseBody> {
+        val users = userRepository.findByUserPreferenceEventType(eventType)
+
+        return users.map { userConverter.toResponseBody(it) }
     }
 
     override fun saveUser(request: UserRequestBody): UserResponseBody {

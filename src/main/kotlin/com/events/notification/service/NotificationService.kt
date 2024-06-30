@@ -1,9 +1,9 @@
 package com.events.notification.service
 
-import com.events.notification.controller.response.UserResponseBody
+import com.events.notification.controller.response.EventResponseBody
 
 interface NotificationService {
 
-    fun sendNotification(userResponseBody: UserResponseBody)
+    fun sendNotification(eventResponseBody: EventResponseBody)
 
 }

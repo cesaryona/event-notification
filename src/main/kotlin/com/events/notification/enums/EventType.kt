@@ -1,19 +1,16 @@
 package com.events.notification.enums
 
-enum class EventType(val description: String) {
+enum class EventType {
 
-    MUSIC("Music"),
-    GASTRONOMY("Food"),
-    SPORTS("Sporting"),
-    THEATER("Theater"),
-    CINEMA("Cinema"),
-    ART_EXHIBITION("Art exhibitions"),
-    WORKSHOP("Workshops"),
-    CONFERENCE("Conferences"),
-    FESTIVAL("Festival"),
-    LITERATURE("Literature");
+    MUSIC,
+    GASTRONOMY,
+    SPORTS,
+    THEATER,
+    CINEMA,
+    ART_EXHIBITION,
+    WORKSHOP,
+    CONFERENCE,
+    FESTIVAL,
+    LITERATURE;
 
-    override fun toString(): String {
-        return description
-    }
 }

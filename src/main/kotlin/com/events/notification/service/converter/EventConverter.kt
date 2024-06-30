@@ -13,7 +13,7 @@ class EventConverter {
         val dateNow = LocalDateTime.now()
         return EventEntity(
             null,
-            request.eventType.description,
+            request.eventType,
             request.description,
             request.dateTime,
             dateNow,

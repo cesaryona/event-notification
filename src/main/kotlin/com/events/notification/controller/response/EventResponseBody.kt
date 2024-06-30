@@ -1,12 +1,13 @@
 package com.events.notification.controller.response
 
+import com.events.notification.enums.EventType
 import org.apache.commons.lang3.builder.ToStringBuilder
 import org.apache.commons.lang3.builder.ToStringStyle
 import java.time.LocalDateTime
 
 data class EventResponseBody(
     val id: String?,
-    val eventType: String,
+    val eventType: EventType,
     val description: String,
     val dateTime: LocalDateTime
 ) {
