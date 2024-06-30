@@ -2,9 +2,7 @@ package com.events.notification.controller
 
 import com.events.notification.controller.request.EventRequestBody
 import com.events.notification.controller.response.EventResponseBody
-import com.events.notification.repository.entity.EventEntity
 import com.events.notification.service.EventService
-import org.slf4j.LoggerFactory
 import org.springframework.data.domain.Page
 import org.springframework.web.bind.annotation.*
 
