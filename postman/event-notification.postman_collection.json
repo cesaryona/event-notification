@@ -1,0 +1,400 @@
+{
+	"info": {
+		"_postman_id": "db7fa6b1-8089-489a-901d-186419c8bbcf",
+		"name": "event-notification",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28523683"
+	},
+	"item": [
+		{
+			"name": "event",
+			"item": [
+				{
+					"name": "get-all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{event-notification}}/v1/events/",
+							"host": [
+								"{{event-notification}}"
+							],
+							"path": [
+								"v1",
+								"events",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{event-notification}}/v1/events/667f4c4da49b0c368fb5c589",
+							"host": [
+								"{{event-notification}}"
+							],
+							"path": [
+								"v1",
+								"events",
+								"667f4c4da49b0c368fb5c589"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "save-event",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const eventTypes = {\r",
+									"    MUSIC: \"Music events and concerts\",\r",
+									"    GASTRONOMY: \"Food and drink events\",\r",
+									"    SPORTS: \"Sporting events\",\r",
+									"    THEATER: \"Theater performances\",\r",
+									"    CINEMA: \"Film screenings\",\r",
+									"    ART_EXHIBITION: \"Art exhibitions\",\r",
+									"    WORKSHOP: \"Workshops and training sessions\",\r",
+									"    CONFERENCE: \"Conferences and seminars\",\r",
+									"    FESTIVAL: \"Festivals and celebrations\",\r",
+									"    LITERATURE: \"Literature and book events\"\r",
+									"};\r",
+									"\r",
+									"const eventTypeKeys = Object.keys(eventTypes);\r",
+									"\r",
+									"function getRandomEventType() {\r",
+									"    const randomIndex = Math.floor(Math.random() * eventTypeKeys.length);\r",
+									"    const randomKey = eventTypeKeys[randomIndex];\r",
+									"    return {\r",
+									"        type: randomKey,\r",
+									"        description: eventTypes[randomKey]\r",
+									"    };\r",
+									"}\r",
+									"\r",
+									"const randomEventType = getRandomEventType();\r",
+									"\r",
+									"pm.variables.set(\"randomEventType\", randomEventType.type);\r",
+									"pm.variables.set(\"randomEventTypeDescription\", randomEventType.description);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"eventType\": \"{{randomEventType}}\",\r\n    \"description\": \"{{randomEventTypeDescription}}\",\r\n    \"dateTime\": \"{{$isoTimestamp}}\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{event-notification}}/v1/events/",
+							"host": [
+								"{{event-notification}}"
+							],
+							"path": [
+								"v1",
+								"events",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const eventTypes = {\r",
+									"    MUSIC: \"Music events and concerts\",\r",
+									"    GASTRONOMY: \"Food and drink events\",\r",
+									"    SPORTS: \"Sporting events\",\r",
+									"    THEATER: \"Theater performances\",\r",
+									"    CINEMA: \"Film screenings\",\r",
+									"    ART_EXHIBITION: \"Art exhibitions\",\r",
+									"    WORKSHOP: \"Workshops and training sessions\",\r",
+									"    CONFERENCE: \"Conferences and seminars\",\r",
+									"    FESTIVAL: \"Festivals and celebrations\",\r",
+									"    LITERATURE: \"Literature and book events\"\r",
+									"};\r",
+									"\r",
+									"const eventTypeKeys = Object.keys(eventTypes);\r",
+									"\r",
+									"function getRandomEventType() {\r",
+									"    const randomIndex = Math.floor(Math.random() * eventTypeKeys.length);\r",
+									"    const randomKey = eventTypeKeys[randomIndex];\r",
+									"    return {\r",
+									"        type: randomKey,\r",
+									"        description: eventTypes[randomKey]\r",
+									"    };\r",
+									"}\r",
+									"\r",
+									"const randomEventType = getRandomEventType();\r",
+									"\r",
+									"pm.variables.set(\"randomEventType\", randomEventType.type);\r",
+									"pm.variables.set(\"randomEventTypeDescription\", randomEventType.description);\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"eventType\": \"{{randomEventType}}\",\r\n    \"description\": \"{{randomEventTypeDescription}}\",\r\n    \"dateTime\": \"{{$isoTimestamp}}\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{event-notification}}/v1/events/667f4c4da49b0c368fb5c589",
+							"host": [
+								"{{event-notification}}"
+							],
+							"path": [
+								"v1",
+								"events",
+								"667f4c4da49b0c368fb5c589"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-by-id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{event-notification}}/v1/events/667f4c4da49b0c368fb5c589",
+							"host": [
+								"{{event-notification}}"
+							],
+							"path": [
+								"v1",
+								"events",
+								"667f4c4da49b0c368fb5c589"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "save-user",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const eventTypes = [\r",
+									"    \"MUSIC\",\r",
+									"    \"GASTRONOMY\",\r",
+									"    \"SPORTS\",\r",
+									"    \"THEATER\",\r",
+									"    \"CINEMA\",\r",
+									"    \"ART_EXHIBITION\",\r",
+									"    \"WORKSHOP\",\r",
+									"    \"CONFERENCE\",\r",
+									"    \"FESTIVAL\",\r",
+									"    \"LITERATURE\"\r",
+									"];\r",
+									"\r",
+									"function getRandomInt(min, max) {\r",
+									"    return Math.floor(Math.random() * (max - min + 1)) + min;\r",
+									"}\r",
+									"\r",
+									"const eventTypeCount = getRandomInt(1, 10);\r",
+									"\r",
+									"const selectedEventTypes = [];\r",
+									"for (let i = 0; i < eventTypeCount; i++) {\r",
+									"    const randomIndex = getRandomInt(0, eventTypes.length - 1);\r",
+									"    selectedEventTypes.push(eventTypes[randomIndex]);\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"randomEventTypeList\", JSON.stringify(selectedEventTypes));"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"{{$randomFirstName}}\",\r\n    \"lastName\": \"{{$randomLastName}}\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"phone\": \"{{$randomPhoneNumber}}\",\r\n    \"userPreference\": {\r\n        \"eventType\": {{randomEventTypeList}},\r\n        \"userNotification\": [\r\n            {\r\n                \"type\": \"SMS\",\r\n                \"active\": \"{{$randomBoolean}}\"\r\n            },\r\n            {\r\n                \"type\": \"EMAIL\",\r\n                \"active\": \"{{$randomBoolean}}\"\r\n            },\r\n            {\r\n                \"type\": \"WHATSAPP\",\r\n                \"active\": \"{{$randomBoolean}}\"\r\n            }\r\n        ]\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{event-notification}}/v1/users/",
+							"host": [
+								"{{event-notification}}"
+							],
+							"path": [
+								"v1",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-user",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const eventTypes = [\r",
+									"    \"MUSIC\",\r",
+									"    \"GASTRONOMY\",\r",
+									"    \"SPORTS\",\r",
+									"    \"THEATER\",\r",
+									"    \"CINEMA\",\r",
+									"    \"ART_EXHIBITION\",\r",
+									"    \"WORKSHOP\",\r",
+									"    \"CONFERENCE\",\r",
+									"    \"FESTIVAL\",\r",
+									"    \"LITERATURE\"\r",
+									"];\r",
+									"\r",
+									"function getRandomInt(min, max) {\r",
+									"    return Math.floor(Math.random() * (max - min + 1)) + min;\r",
+									"}\r",
+									"\r",
+									"const eventTypeCount = getRandomInt(1, 10);\r",
+									"\r",
+									"const selectedEventTypes = [];\r",
+									"for (let i = 0; i < eventTypeCount; i++) {\r",
+									"    const randomIndex = getRandomInt(0, eventTypes.length - 1);\r",
+									"    selectedEventTypes.push(eventTypes[randomIndex]);\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"randomEventTypeList\", JSON.stringify(selectedEventTypes));"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"{{$randomFirstName}}\",\r\n    \"lastName\": \"{{$randomLastName}}\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"phone\": \"{{$randomPhoneNumber}}\",\r\n    \"userPreference\": {\r\n        \"eventType\": {{randomEventTypeList}},\r\n        \"userNotification\": [\r\n            {\r\n                \"type\": \"SMS\",\r\n                \"active\": \"{{$randomBoolean}}\"\r\n            },\r\n            {\r\n                \"type\": \"EMAIL\",\r\n                \"active\": \"{{$randomBoolean}}\"\r\n            },\r\n            {\r\n                \"type\": \"WHATSAPP\",\r\n                \"active\": \"{{$randomBoolean}}\"\r\n            }\r\n        ]\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{event-notification}}/v1/users/668020b39db51772987d30b1",
+							"host": [
+								"{{event-notification}}"
+							],
+							"path": [
+								"v1",
+								"users",
+								"668020b39db51772987d30b1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{event-notification}}/v1/users/",
+							"host": [
+								"{{event-notification}}"
+							],
+							"path": [
+								"v1",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{event-notification}}/v1/users/668020b39db51772987d30b1",
+							"host": [
+								"{{event-notification}}"
+							],
+							"path": [
+								"v1",
+								"users",
+								"668020b39db51772987d30b1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-by-id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{event-notification}}/v1/users/668020b39db51772987d30b1",
+							"host": [
+								"{{event-notification}}"
+							],
+							"path": [
+								"v1",
+								"users",
+								"668020b39db51772987d30b1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
