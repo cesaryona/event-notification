@@ -9,17 +9,20 @@ import org.springframework.stereotype.Service
 
 @Service
 class KafkaEventNotificationProducerServiceImpl(
-    private val kafkaTemplate: KafkaTemplate<String, Any>
+    private val kafkaTemplate: KafkaTemplate<String, Any>,
+    private val objectMapper: ObjectMapper
 ) : KafkaProducerService {
 
     private val log = KotlinLogging.logger {}
 
-    @Value("{kafka.topic.event-notification}")
+    @Value("\${kafka.topic.event-notification}")
     private lateinit var topic: String
 
     override fun sendMesssage(message: Any) {
-        log.info { "Sending message [$message] to TOPIC [$topic]" }
-        kafkaTemplate.send(topic, message)
+        val jsonMessage = objectMapper.writeValueAsString(message)
+
+        log.info { "Sending message [$jsonMessage] to TOPIC [$topic]" }
+        kafkaTemplate.send(topic, jsonMessage)
     }
 
 }
